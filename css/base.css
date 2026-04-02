@@ -56,6 +56,18 @@ body {
   display: block;
 }
 
+/* Splash screen: flex centering, hidden when inactive */
+#screen-splash {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#screen-splash.active {
+    display: flex;
+}
+
 .screen::-webkit-scrollbar {
   display: none;
 }
