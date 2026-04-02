@@ -1,0 +1,248 @@
+/* Screen transitions */
+.screen.slide-in-right {
+  display: block;
+  animation: slideInRight 300ms ease-out forwards;
+}
+
+.screen.slide-out-left {
+  display: block;
+  animation: slideOutLeft 300ms ease-out forwards;
+}
+
+.screen.slide-in-left {
+  display: block;
+  animation: slideInLeft 300ms ease-out forwards;
+}
+
+.screen.slide-out-right {
+  display: block;
+  animation: slideOutRight 300ms ease-out forwards;
+}
+
+.screen.fade-in {
+  display: block;
+  animation: fadeIn 200ms ease-out forwards;
+}
+
+.screen.fade-out {
+  display: block;
+  animation: fadeOut 200ms ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0.8; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-30%); opacity: 0; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0.8; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(30%); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* === Card Animations === */
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card, .stat-card, .insight-card, .energy-card, .knowledge-item, .recipe-card, .nutrient-chart-card, .chart-container {
+  animation: cardFadeUp 400ms ease-out both;
+}
+
+/* Stagger card animations */
+.card:nth-child(1), .stat-card:nth-child(1) { animation-delay: 0ms; }
+.card:nth-child(2), .stat-card:nth-child(2) { animation-delay: 60ms; }
+.card:nth-child(3), .stat-card:nth-child(3) { animation-delay: 120ms; }
+.card:nth-child(4), .stat-card:nth-child(4) { animation-delay: 180ms; }
+.card:nth-child(5) { animation-delay: 240ms; }
+.card:nth-child(6) { animation-delay: 300ms; }
+.card:nth-child(7) { animation-delay: 360ms; }
+
+/* === Button Press Feedback === */
+.btn, .nav-item, .mood-btn, .prompt-btn, .list-item, .brainfood-tab {
+  transition: transform 200ms ease-out, opacity 200ms ease-out, background 200ms ease;
+}
+
+.btn:active, .nav-item:active, .mood-btn:active, .prompt-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+.card:active, .recipe-card:active, .energy-card:active, .stat-card:active {
+  transform: scale(0.97);
+  opacity: 0.92;
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
+
+/* === Progress Bar Animation === */
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+.macro-completion-fill, .progress-fill, .nourishment-bar-fill {
+  animation: barGrow 800ms ease-out both;
+}
+
+/* === Greeting Card Animations (Extended) === */
+@keyframes sunRiseLg {
+  0% { transform: translateY(30px) scale(0.6); opacity: 0; }
+  50% { transform: translateY(-6px) scale(1.08); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes sunPulseLg {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(211,199,45,0.35)); }
+  50% { filter: drop-shadow(0 0 22px rgba(211,199,45,0.65)); }
+}
+
+@keyframes sunRaysSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes moonGlowLg {
+  0% { transform: translateY(24px) rotate(-15deg) scale(0.7); opacity: 0; }
+  50% { transform: translateY(-4px) rotate(3deg) scale(1.05); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes moonShimmerLg {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(232,218,240,0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(232,218,240,0.6)); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes cloudDrift {
+  0%, 100% { transform: translateX(0); opacity: 0.15; }
+  50% { transform: translateX(8px); opacity: 0.25; }
+}
+
+.greeting-sun-lg {
+  animation: sunRiseLg 1000ms ease-out both, sunPulseLg 3.5s ease-in-out 1000ms infinite;
+}
+
+.greeting-sun-lg .sun-rays {
+  transform-origin: 40px 40px;
+  animation: sunRaysSpin 20s linear infinite;
+}
+
+.greeting-sun-lg .sun-glow-ring {
+  animation: sunPulseLg 3s ease-in-out 600ms infinite;
+}
+
+.greeting-moon-lg {
+  animation: moonGlowLg 1000ms ease-out both, moonShimmerLg 3.5s ease-in-out 1000ms infinite;
+}
+
+.greeting-moon-lg .moon-glow {
+  animation: moonShimmerLg 4s ease-in-out infinite;
+}
+
+/* === Quirky Health Micro-animations === */
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes gentleSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.meal-illust-sm svg {
+  animation: floatBounce 3s ease-in-out infinite;
+}
+
+.grocery-illust svg {
+  animation: floatBounce 4s ease-in-out 0.5s infinite;
+}
+
+.energy-icon-wrap svg {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* === SVG Line Drawing for Charts === */
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Splash screen animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes splashFade {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 24px);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--color-brand);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-chip);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
